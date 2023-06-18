@@ -1,0 +1,320 @@
+/*márgen y relleno general*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav-link{
+    margin: 10px;
+}
+
+.title{
+    padding: 1rem;
+}
+
+.slide{
+    margin-top: 10px;
+}
+
+.slide img{
+    height: 60vh;
+}
+
+/*color hr
+.hr{
+    background-color: red;
+    height: 1px;
+    border: none;
+}*/
+/*
+.reloj {
+    color: #0d1420;
+    font-size: 120px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    letter-spacing: 5px;
+    text-align: center;
+    background-color: #f7d06a;
+    border: 50px solid #091321;
+    border-radius: 40px;
+}
+@media only screen and (min-width: 200px) {
+	.reloj {
+	    color: #0d1420;
+	    font-size: 60px;
+	    font-family: Arial;
+	    letter-spacing: 5px;
+	    text-align: center;
+	    background-color: #f7d06a;
+	    border: 10px solid #091321;
+	    border-radius: 20px;
+	}
+}
+
+@media only screen and (min-width: 960px) {
+	.reloj {
+	    color: #0d1420;
+	    font-size: 120px;
+	    font-family: Arial;
+	    letter-spacing: 5px;
+	    text-align: center;
+	    background-color: #f7d06a;
+	    border: 10px solid #091321;
+	    border-radius: 20px;
+	}
+} */
+
+
+
+.btn{
+    display: block;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+}
+/*container*/
+.container{
+    max-width: 1170px;
+    margin: auto;
+}
+.row{
+    color: aliceblue;
+}
+
+.col{
+    background-color:brown;
+    margin: 9px;
+}
+
+/*estilo lista*/
+ul{
+    list-style: none;
+    line-height:1.5em;
+}
+
+/*color borde card*/
+.card {
+    border: 2px solid coral;
+    color: #24262b;
+  }
+
+/*icono cositas*/
+
+.icon-container {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .icon-container img {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .icon-container img:nth-child(2) {
+    display: none; 
+  }
+  
+  .icon-container:hover img:nth-child(1) {
+    display: none;
+  }
+  
+  .icon-container:hover img:nth-child(2) {
+    display: block;
+  }
+  
+  body{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 30px;
+}
+
+input{
+    float:left;
+    margin-bottom: 10px;
+}
+
+label{
+    clear: both;
+    float:left;
+    width: 200px;
+}
+
+#enviar{
+    clear: both;
+    float:left;
+    width: 150px;
+}
+
+#limpiar{
+    float:left;
+    width: 150px;
+    margin-left: 15px;
+}
+#mostrar{
+    clear: both;
+    float:left;
+    width: 150px;
+}
+.error-control{
+    border: 1px solid red;
+}
+label.error{
+    color:red;
+    width: 250px;
+    font-size: 0.8em;
+    margin-top:-5px;
+    margin-bottom: 10px;
+}
+
+/*color fondo footer*/
+.footer{
+    background-color: #24262b;
+    padding: 70px 0;
+}
+
+/*ancho y relleno columnas*/
+.footer-col{
+    width: 25%;
+    padding: 0 15px;
+}
+
+/*confi diseño titulos, añade cuadro rojo*/
+.footer-col h4{
+    font-size: 16px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 30px;
+    font-weight: 500;
+    position: relative;
+    background-color: brown;
+    background-size: auto;
+}
+
+/*confi diseño titulos, añade rayita debajo de los títulos*/
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    background-color: #e91e63;
+    height: 2px;
+    box-sizing: border-box;
+    width: 50px;
+}
+
+/*
+.footer-col ul li:not(:last-child){
+    margin-bottom: 10px;
+}*/
+/*hoover api lista fechas feriados*/
+tr:hover {
+    background-color: brown;
+    color: white;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    padding:5px;
+}
+
+
+/*color api */
+.textoDir{
+    padding:5px;
+}
+
+/*diseño contenido listas*/
+.footer-col ul li a{
+    font-size: 16px;
+    text-transform: capitalize;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 300;
+    color: #bbbbbb;
+    display: block;
+    transition: all 0.3s ease;
+}
+
+/*diseño listas, mouse encima*/
+.footer-col ul li a:hover{
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/*diseño iconos rrss*/
+.footer-col .iconos-rrss a{
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin:0 10px 10px 0;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.5s ease;
+}
+
+/*diseño iconos rrss, mouse encima*/
+.footer-col .iconos-rrss a:hover{
+    color: #24262b;
+    background-color: #ffffff;
+}
+
+/*responsiiiiiiiiiiiiive*/
+@media(max-width:797px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+    }
+}
+
+@media(max-width:667px){
+    .footer-col{
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+/*wrapper achicador de video yutub, robado de internet*/
+.videowrapper {
+    position: relative;
+    padding-bottom: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 0;
+}
+
+.videowrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*archivo 3 configuracion carta
+.card-body-archivo3{
+    text-align:initial;
+    color: #24262b;
+    padding: 1px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}*/
+/*.embed-container { 
+    position: relative; 
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    max-width: 100%;
+    height: auto;
+} 
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}*/
+

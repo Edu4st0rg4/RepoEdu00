@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reloj.css' %}">
+    <script type="text/javascript" src="{% static 'js/reloj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mouseover.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <title>Inicio</title>
+</head>
+<!--body tiene función reloj-->
+<body onload="reloj()">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: brown">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <!--insertamos el logo-->    
+        <a href="{% url 'inicio' %}" class="navbar-brand">
+            <div class="icon-container">
+                <img src="{% static 'img/logo.png' %}" width="50px" height="50px"/>
+                <img src="{% static 'img/dance-dog.gif' %}" width="50px" height="50px"/> 
+              </div>
+        </a>
+        <!--creamos las opciones del menú-->
+        <div class="collapse navbar-collapse" id="opciones" style="background-color:#24262b">
+            
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!--a class color cambia el color de los menu junto al boton amborguesa-->
+                    <a class="nav-link" href="{% url 'inicio' %}" target="_blank" style="color: aliceblue;">Inicio</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_2' %}" target="_blank" style="color: aliceblue;">Quienes somos</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_3' %}" target="_blank" style="color: aliceblue;">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'API' %}" target="_blank" style="color: aliceblue;">Feriados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'formulario' %}" target="_blank" style="color: aliceblue;">Contáctanos</a>
+                </li>
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="nav-link" href="#" target="_blank" style="color: aliceblue;">Bienvenid@ {{user.username}}</a>
+                </li>
+            </ul>
+                {% else %}
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registrar' %}" target="_blank" style="color: aliceblue;">Registrarse</a>
+                    
+                </li>
+            </ul>
+                {% endif %}
+            <!--<form class="form-inline- mt-2 mt-md-0">                
+                <input class="form-control mr-sm-2" type="text" placeholder="¿Qué producto buscas?" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="btnBuscar">Buscar</button>
+            </form>-->
+            <div class="collapse navbar-collapse" id="opciones" style="background-color:#24262b">
+                {% if user.is_authenticated %}
+                <a href="{% url 'logout' %}" id="userAlimalitos" style="color: aliceblue;">Cerrar Sesión
+                    <img src="{% static 'img/logout.jpg' %}" alt="icono" height="30px" width="30px">
+                </a>
+                {% else %}
+                <a href="{% url 'login' %}" id="userAlimalitos" target="_blank" style="color: aliceblue;">Iniciar sesión
+                    
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        <!--reproductor de música
+        <audio controls loop>
+            <source src="music/Donkey Kong Country  Aquatic Ambience.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        <br>-->
+    </nav> <!--cierre del menú-->
+    <!--carrusel-->
+    <div class="container-fluid">
+        <div id="carousel1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel1" data-slide-to="0" active></li>
+                <li data-target="#carousel1" data-slide-to="1"></li>
+                <li data-target="#carousel1" data-slide-to="2"></li>
+            </ol>
+            <!--configuramos las imágenes que se deslizan-->
+            <div class="carousel-inner">
+                <!--configuramos la primera ubicación-->
+                <div class="carousel-item active">
+                    <img src="{% static 'img/carusel_001.png' %}" class="d-block w-100">
+                    <div class="carousel-caption" style="color:whitesmoke;"> <!--insertamos titulo y texto-->
+                        <h3><strong>Especial Cachorros</strong></h3>
+                        <p><strong>Para tu Perro</strong></p>
+                    </div>
+                </div>
+                <!--configuramos la segunda ubicación y la tercera-->
+                <div class="carousel-item">
+                    <img src="{% static 'img/carusel_002.png' %}" class="d-block w-100">
+                    <div class="carousel-caption" style="color:whitesmoke;">
+                        <h3><strong>Especial Gatito</strong></h3>
+                        <p><strong>Para tu Gato</strong></p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="{% static 'img/carusel_003.png' %}" class="d-block w-100">
+                    <div class="carousel-caption" style="color: whitesmoke;">
+                        <h3><strong>Para los regalones</strong></h3>
+                        <p><strong>Cuidado de las mascotas</strong></p>
+                    </div>
+                </div>
+            </div><!--cierra carousel inner-->
+            <!--codificamos avanzar y retroceder-->
+            <a href="#carousel1" class="carousel-control-prev" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">previous</span>
+            </a>
+            <a href="#carousel1" class="carousel-control-next" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">next</span>
+            </a>
+        </div>
+    </div>
+    <br>
+    <!--Comienzo carta de texto parrafo 1 -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-body" style="background-color:darkred">
+                        <h4 class="card-title" style="color: white;">La importancia de la alimentación</h4>
+                        <p class="card-text" style="color: white;">
+                            La alimentación es fundamental para su salud, vitalidad y bienestar, y debemos procurar que, a través de ella, reciba todos los nutrientes necesarios para una vida sana y feliz.
+                            Una buena alimentación es indispensable para cuidar la salud y mejorar la calidad de vida de nuestros animales de compañía. Un alimento equilibrado, natural, con ingredientes 
+                            seleccionados específicamente para sus requerimientos de edad, tamaño y actividad física, contribuirá a prolongar la vida de nuestro fiel amigo y nos permitirá disfrutar juntos durante más tiempo.
+                        </p>
+                    </div>
+                </div>
+            </div><!--fin col-->
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-body" style="background-color:darkred;">
+                        <h4 class="card-title" style="color: white;">Animales que ayudan a las personas</h4>
+                        <p class="card-text" style="color: white;">
+                            Nada se compara con la alegría de volver a casa y encontrar un compañero leal. El amor incondicional de una mascota puede brindar más que compañía. Las mascotas también pueden disminuir el estrés, 
+                            mejorar la salud del corazón e, incluso, ayudar a los niños con sus habilidades emocionales y sociales. En los últimos diez años, NIH se ha asociado con el Centro WALTHAM para Nutrición de Mascotas 
+                            de la Corporación Mars para responder preguntas como esta al financiar estudios de investigación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cierre carta de texto parrafo 1-->
+    <br>
+    <!--Comienzo cartas de productos numero 1-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/comida1.jpg' %}">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color: black;">Alaska - Alimento Premium Perro Adulto Raza Mediana y Grande</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">ALASKA</h6>
+                        <p class="card-text" style="color: black;"> $56.380</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div><!--fin col-->
+            <div class="col-md">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/comida2.jpg' %}">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color: black;">Cat Chow - Alimento Húmedo Gato Adulto Carne Sobre</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">CAT CHOW</h6>
+                        <p class="card-text" style="color: black;"> $900</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="card">
+                    <img class="card-img-top" src="{% static 'img/comida3.jpg' %}">
+                    <div class="card-body">
+                        <h6 class="card-title" style="color: black;">Nexgard - Antiparasitario Masticable Perros de 2 A 4 Kg</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">NEXGARD</h6>
+                        <p class="card-text" style="color: black;"> $22.200</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <!--Cierre cartas de productos numero 1-->
+    <!--footer-->
+    <hr>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Inicio</marquee></h4>
+                    <ul>
+                        <li><a href="{% url 'inicio' %}" target="_blank">Inicio</a></li>
+                        <li><a href="{% url 'archivo_2' %}" target="_blank">Quienes somos</a></li>
+                        <li><a href="{% url 'archivo_3' %}" target="_blank">Productos</a></li>
+                        <li><a href="{% url 'API' %}" target="_blank">Feriados</a></li>
+                        <li><a href="{% url 'formulario' %}" target="_blank">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Quienes somos</marquee></h4>
+                    <ul>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Misión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Visión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Otros proyectos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">¡Síguenos!</marquee></h4>
+                    <div class="iconos-rrss">  
+                        <a href="#"><img src="{% static 'img/IG.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/TW.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/FB.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/YT.png' %}" alt="icono" height="40px" width="40px"></a>                  
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Contacto</marquee></h4>
+                    <ul>
+                        <li><a href="#"><img src="{% static 'img/location.png' %}" alt="icono" height="30px" width="30px"> Casita, Maipú</a></li>
+                        <li><a href="#"><img src="{% static 'img/Telefono.png' %}" alt="icono" height="30px" width="30px"> 123456789</a></li>
+                        <li><a href="{% url 'formulario' %}"><img src="{% static 'img/correo.png' %}" alt="icono" height="30px" width="30px"> consultas@alimalitos.cl</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" style="color: azure;">
+                    <marquee behavior="" direction="left"><small>&copy;<b>Todos los derechos reservados</b></small></marquee>
+                </div>
+                <!--reloj aca-->
+                <div class="footer-col" id="pantalla"></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</body>
+</html>

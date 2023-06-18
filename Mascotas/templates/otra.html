@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reloj.css' %}">
+    <script type="text/javascript" src="{% static 'js/reloj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mouseover.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <script type="text/javascript" src="{% static 'js/valida.js' %}"></script>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <title>Productos</title>
+</head>
+<body onload="reloj()">
+    <div class="container">
+        <h1> Productos </h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Marca</th>
+                    <th>Tipo</th>
+                    <th>Categoria</th>
+                    <th>Imagen</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for producto in cositas %}
+                <tr>
+                    <td>{{ producto.codigo }}</td>
+                    <td>{{ producto.marca }} </td>
+                    <td>{{ producto.tipo }}</td>
+                    <td>{{ producto.categoria }}</td>
+                    {% if producto.imagen %}
+                        <td>
+                            <img src="{{ producto.imagen.url }}" style="height: 50px; width: 50px;">
+                        </td>
+                    {% else %}
+                        <td>
+                            <p style="color:red">No tiene foto</p>
+                        </td>
+                    {% endif %}
+                    {% if user.is_authenticated %}
+                        <td>
+                            <a href="{% url 'eliminar' producto.codigo %}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    {% else %}
+                        <td>
+                            <a href="#" class="btn btn-danger">No tiene permiso</a>
+                        </td>
+                    {% endif %}
+                    <td>
+                        <a href="{% url 'modificar' producto.codigo %}" class="btn btn-primary">Modificar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'crear' %}" class="btn btn-success">Crear Producto</a>
+    </div>
+<!--footer-->
+<hr>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Inicio</marquee></h4>
+                <ul>
+                    <li><a href="{% url 'inicio' %}" target="_blank">Inicio</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Quienes somos</a></li>
+                    <li><a href="{% url 'archivo_3' %}" target="_blank">Productos</a></li>
+                    <li><a href="{% url 'API' %}" target="_blank">Feriados</a></li>
+                    <li><a href="{% url 'formulario' %}" target="_blank">Contáctanos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Quienes somos</marquee></h4>
+                <ul>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Misión</a></li>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Visión</a></li>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Otros proyectos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">¡Síguenos!</marquee></h4>
+                <div class="iconos-rrss">  
+                    <a href="#"><img src="{% static 'img/IG.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/TW.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/FB.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/YT.png' %}" alt="icono" height="40px" width="40px"></a>                  
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Contacto</marquee></h4>
+                <ul>
+                    <li><a href="#"><img src="{% static 'img/location.png' %}" alt="icono" height="30px" width="30px"> Casita, Maipú</a></li>
+                    <li><a href="#"><img src="{% static 'img/Telefono.png' %}" alt="icono" height="30px" width="30px"> 123456789</a></li>
+                    <li><a href="{% url 'formulario' %}"><img src="{% static 'img/correo.png' %}" alt="icono" height="30px" width="30px"> consultas@alimalitos.cl</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="color: azure;">
+                <marquee behavior="" direction="left"><small>&copy;<b>Todos los derechos reservados</b></small></marquee>
+            </div>
+            <!--reloj aca-->
+            <div class="footer-col" id="pantalla"></div>
+        </div>
+    </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</body>
+</html>

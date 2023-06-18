@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reloj.css' %}">
+    <script type="text/javascript" src="{% static 'js/reloj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mouseover.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <title>Productos</title>
+</head>
+<!--body tiene función reloj-->
+<body onload="reloj()">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: brown">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <!--insertamos el logo-->    
+        <a href="{% url 'archivo_3' %}" class="navbar-brand">
+            <div class="icon-container">
+                <img src="{% static 'img/logo.png' %}" width="50px" height="50px"/>
+                <img src="{% static 'img/dance-dog.gif' %}" width="50px" height="50px"/> 
+              </div>
+        </a>
+        <!--creamos las opciones del menú-->
+        <div class="collapse navbar-collapse" id="opciones" style="background-color:#24262b">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!--a class color cambia el color de los menu junto al boton amborguesa-->
+                    <a class="nav-link" href="{% url 'inicio' %}" target="_blank" style="color: aliceblue;">Inicio</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_2' %}" target="_blank" style="color: aliceblue;">Quienes somos</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_3' %}" target="_blank" style="color: aliceblue;">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'API' %}" target="_blank" style="color: aliceblue;">Feriados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'formulario' %}" target="_blank" style="color: aliceblue;">Contáctanos</a>
+                </li>
+            </ul>
+        </div>
+        <!--reproductor de música
+        <audio controls loop>
+            <source src="music/Donkey Kong Country  Aquatic Ambience.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        <br>-->
+    </nav><!--cierre del menú-->
+    <!--Cierre columnas menú-->
+    <!--Comienzo galeria imagenes-->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md">
+                <br>
+                <!--1-->
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/comida1.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Alaska - Alimento Premium Perro</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">ALASKA</h6>
+                        <p class="card-text">$56.380</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--2-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/comida2.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Cat Chow - Alimento Húmedo Gato</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">CAT CHOW</h6>
+                        <p class="card-text">$900</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--3-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/comida3.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Nexgard-Antiparasitario Masticable</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">NEXGARD</h6>
+                        <p class="card-text">$22.200</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--4-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/Matisse_castrados-salmao.png' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Naturalis - Alimento Gatitos Pollo</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">NATURALIS</h6>
+                        <p class="card-text">$14.800</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--5-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/original-kitten.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Nutrience - Alimento Original Kitten</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">NUTRIENCE</h6>
+                        <p class="card-text">$22.500</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+
+                </div>
+            </div>
+            <!--6-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/pro-pac-deep-sea-select.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Pro Pac - Alimento Gato Deep Sea</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">PRO PAC</h6>
+                        <p class="card-text">$22.800</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--7-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/cats-best-original-arena-vegetal.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Cats Best - Arena Sanitaria Para Gatos</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">CATS BEST</h6>
+                        <p class="card-text">$17.490</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--8-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/Catit-Bano-Con-Cubierta-Rosa-1.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">Catit - Baño Con Cubierta</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">CATIT</h6>
+                        <p class="card-text">$41.391</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+            <!--9-->
+            <div class="col-md">
+                <br>
+                <div class="card" style="width: 20rem;">
+                    <center><img class="card-img-top" src="{% static 'img/nd-prime-feline-adultos-castrados-pollo-y-granada.jpg' %}" style="width: 10rem;"></center>
+                    <div class="card-body-archivo3">
+                        <h6 class="card-title">N&D Prime - Alimento para Gato Pollo</h6>
+                        <h6 class="card-title" style="color:cornflowerblue;">N&D</h6>
+                        <p class="card-text">$20.700</p>
+                        <a href="#" class="btn btn-primary">Agregar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Cierre galeria imagenes-->
+<!--footer-->
+<hr>
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Inicio</marquee></h4>
+                <ul>
+                    <li><a href="{% url 'inicio' %}" target="_blank">Inicio</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Quienes somos</a></li>
+                    <li><a href="{% url 'archivo_3' %}" target="_blank">Productos</a></li>
+                    <li><a href="{% url 'API' %}" target="_blank">Feriados</a></li>
+                    <li><a href="{% url 'formulario' %}" target="_blank">Contáctanos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Quienes somos</marquee></h4>
+                <ul>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Misión</a></li>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Visión</a></li>
+                <li><a href="{% url 'archivo_2' %}" target="_blank">Otros proyectos</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">¡Síguenos!</marquee></h4>
+                <div class="iconos-rrss">  
+                    <a href="#"><img src="{% static 'img/IG.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/TW.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/FB.png' %}" alt="icono" height="40px" width="40px"></a>
+                    <a href="#"><img src="{% static 'img/YT.png' %}" alt="icono" height="40px" width="40px"></a>                  
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Contacto</marquee></h4>
+                <ul>
+                    <li><a href="#"><img src="{% static 'img/location.png' %}" alt="icono" height="30px" width="30px"> Casita, Maipú</a></li>
+                    <li><a href="#"><img src="{% static 'img/Telefono.png' %}" alt="icono" height="30px" width="30px"> 123456789</a></li>
+                    <li><a href="{% url 'formulario' %}"><img src="{% static 'img/correo.png' %}" alt="icono" height="30px" width="30px"> consultas@alimalitos.cl</a></li>
+                </ul>
+            </div>
+            <div class="footer-col" style="color: azure;">
+                <marquee behavior="" direction="left"><small>&copy;<b>Todos los derechos reservados</b></small></marquee>
+            </div>
+            <!--reloj aca-->
+            <div class="footer-col" id="pantalla"></div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

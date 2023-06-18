@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reloj.css' %}">
+    <script type="text/javascript" src="{% static 'js/reloj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mouseover.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <script type="text/javascript" src="{% static 'js/valida.js' %}"></script>
+    <script>
+        let url='https://api.victorsanmartin.com/feriados/en.json';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => mostrarData(data))
+            .catch(error => console.log(error))
+        const mostrarData=(data)=>{
+            console.log(data)
+            let body=""
+            for(var i=0; i<data.data.length; i++)
+            {
+                body+=`<tr>
+                    <td><p class="textoDir">${data.data[i].date + '\t' + data.data[i].title+', es feriado ' + data.data[i].extra}</p></td>
+                    </tr>`
+            }
+            document.getElementById('data').innerHTML=body;
+        }
+    </script>
+    <title>API</title>
+</head>
+<!--body tiene función reloj-->
+<body onload="reloj()">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: brown">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <!--insertamos el logo-->    
+        <a href="{% url 'inicio' %}" class="navbar-brand">
+            <div class="icon-container">
+                <img src="{% static 'img/logo.png' %}" width="50px" height="50px"/>
+                <img src="{% static 'img/dance-dog.gif' %}" width="50px" height="50px"/> 
+              </div>
+        </a>
+        <!--creamos las opciones del menú-->
+        <div class="collapse navbar-collapse" id="opciones" style="background-color:#24262b">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!--a class color cambia el color de los menu junto al boton amborguesa-->
+                    <a class="nav-link" href="{% url 'inicio' %}" target="_blank" style="color: aliceblue;">Inicio</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_2' %}" target="_blank" style="color: aliceblue;">Quienes somos</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_3' %}" target="_blank" style="color: aliceblue;">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'API' %}" target="_blank" style="color: aliceblue;">Feriados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'formulario' %}" target="_blank" style="color: aliceblue;">Contáctanos</a>
+                </li>
+            </ul>
+        </div>
+        <!--reproductor de música
+        <audio controls loop>
+            <source src="music/Donkey Kong Country  Aquatic Ambience.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        <br>-->
+    </nav><!--cierre del menú-->
+    <!--Abre columnas menú-->
+    <div class="row">
+        <div class="col" style="text-align:center;font-size: xx-large;" onclick="clickMeEvent(this)">Todo Perros</div>
+        <div class="col" style="text-align:center;font-size: xx-large;" onclick="clickMeEvent1(this)">Todo Gatos</div>
+        <div class="col" style="text-align:center;font-size: xx-large;" onclick="clickMeEvent2(this)">Todo Exóticos</div>
+    </div>
+    <!--Cierre columnas menú-->
+    <br>
+    <div class="container table table-responsive">
+        <h2>Días feriados año 2023</h2>
+        <table class="table ">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody id="data">
+            </tbody>
+        </table>
+    </div>
+    <!--footer-->
+    <hr>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Inicio</marquee></h4>
+                    <ul>
+                        <li><a href="{% url 'inicio' %}" target="_blank">Inicio</a></li>
+                        <li><a href="{% url 'archivo_2' %}" target="_blank">Quienes somos</a></li>
+                        <li><a href="{% url 'archivo_3' %}" target="_blank">Productos</a></li>
+                        <li><a href="{% url 'API' %}" target="_blank">Feriados</a></li>
+                        <li><a href="{% url 'formulario' %}" target="_blank">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Quienes somos</marquee></h4>
+                    <ul>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Misión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Visión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Otros proyectos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">¡Síguenos!</marquee></h4>
+                    <div class="iconos-rrss">  
+                        <a href="#"><img src="{% static 'img/IG.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/TW.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/FB.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/YT.png' %}" alt="icono" height="40px" width="40px"></a>                  
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Contacto</marquee></h4>
+                    <ul>
+                        <li><a href="#"><img src="{% static 'img/location.png' %}" alt="icono" height="30px" width="30px"> Casita, Maipú</a></li>
+                        <li><a href="#"><img src="{% static 'img/Telefono.png' %}" alt="icono" height="30px" width="30px"> 123456789</a></li>
+                        <li><a href="{% url 'formulario' %}"><img src="{% static 'img/correo.png' %}" alt="icono" height="30px" width="30px"> consultas@alimalitos.cl</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" style="color: azure;">
+                    <marquee behavior="" direction="left"><small>&copy;<b>Todos los derechos reservados</b></small></marquee>
+                </div>
+                <!--reloj aca-->
+                <div class="footer-col" id="pantalla"></div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>  
+</body>
+</html>

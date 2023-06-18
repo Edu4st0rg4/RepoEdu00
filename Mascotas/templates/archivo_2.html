@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/reloj.css' %}">
+    <script type="text/javascript" src="{% static 'js/reloj.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mouseover.js' %}"></script>
+    <link rel="shortcut icon" href="{% static 'img/logo.png' %}">
+    <title>Quienes somos</title>
+</head>
+<body onload="reloj()">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: brown">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" 
+            data-target="#opciones">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+        <!--insertamos el logo-->    
+        <a href="{% url 'archivo_2' %}" class="navbar-brand">
+            <div class="icon-container">
+                <img src="{% static 'img/logo.png' %}" width="50px" height="50px"/>
+                <img src="{% static 'img/rm.gif' %}" width="50px" height="50px"/> 
+              </div>
+        </a>
+        <!--creamos las opciones del menú-->
+        <div class="collapse navbar-collapse" id="opciones" style="background-color:#24262b">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <!--a class color cambia el color de los menu junto al boton amborguesa-->
+                    <a class="nav-link" href="{% url 'inicio' %}" target="_blank" style="color: aliceblue;">Inicio</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_2' %}" target="_blank" style="color: aliceblue;">Quienes somos</a>
+                </li>
+                <hr class="hr">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'archivo_3' %}" target="_blank" style="color: aliceblue;">Productos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'API' %}" target="_blank" style="color: aliceblue;">Feriados</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'formulario' %}" target="_blank" style="color: aliceblue;">Contáctanos</a>
+                </li>
+            </ul>
+        </div>
+        <!--reproductor de música
+        <audio controls loop>
+            <source src="music/Donkey Kong Country  Aquatic Ambience.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+          </audio>
+        <br>-->
+    </nav><!--cierre del menú-->
+    <hr>
+    <!--Visión-->
+    <div class="col-md">
+        <div class="card" id="vision">
+            <div class="card-body" style="background-color:darkred">
+                <h4 class="card-title" style="color: white;" onmouseover="style.color='black'" onmouseout="style.color='white'">Visión</h4>
+                <p class="card-text" style="color: white;" onmouseover="style.color='grey'" onmouseout="style.color='white'">
+                    Proveer los productos de mejor calidad para las mascotas, ofreciendo una gran variedad de productos
+                    para satisfacer las necesidades de nuestros clientes.
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!--Misión-->
+    <div class="col-md">
+        <div class="card" id="mision">
+            <div class="card-body" style="background-color:darkred;">
+                <h4 class="card-title" style="color: white;" onmouseover="style.color='black'" onmouseout="style.color='white'">Misión</h4>
+                <p class="card-text" style="color: white;" onmouseover="style.color='grey'" onmouseout="style.color='white'">
+                    Tener los productos y alimentos que buscan nuestros clientes es nuestra misión, logrando que nuestras 
+                    tiendas provean todo lo que podrían necesitar para sus mascotas.
+                </p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <!--otros-->
+    <div class="col-md">
+        <div class="card" id="otros">
+            <div class="card-body" style="background-color:darkred;">
+                <h5 class="card-title" style="color: white;" onmouseover="style.color='black'" onmouseout="style.color='white'">Otros proyectos</h5>
+                <p class="card-text" style="color: white;" onmouseover="style.color='grey'" onmouseout="style.color='white'">
+                    Realizaremos talleres y cursos para promover el cuidado y limpieza de las mascotas, realizados por nuestros trabajadores más capacitados en estas áreas.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!--VIDEO YUTU!-->
+    <hr>
+    <div class="videowrapper">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ex8my8af_E8" title="YouTube video player" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; 
+        web-share" allowfullscreen></iframe>
+    </div>
+    <!--footer-->
+    <hr>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Inicio</marquee></h4>
+                    <ul>
+                        <li><a href="{% url 'inicio' %}" target="_blank">Inicio</a></li>
+                        <li><a href="{% url 'archivo_2' %}" target="_blank">Quienes somos</a></li>
+                        <li><a href="{% url 'archivo_3' %}" target="_blank">Productos</a></li>
+                        <li><a href="{% url 'API' %}" target="_blank">Feriados</a></li>
+                        <li><a href="{% url 'formulario' %}" target="_blank">Contáctanos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Quienes somos</marquee></h4>
+                    <ul>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Misión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Visión</a></li>
+                    <li><a href="{% url 'archivo_2' %}" target="_blank">Otros proyectos</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">¡Síguenos!</marquee></h4>
+                    <div class="iconos-rrss">  
+                        <a href="#"><img src="{% static 'img/IG.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/TW.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/FB.png' %}" alt="icono" height="40px" width="40px"></a>
+                        <a href="#"><img src="{% static 'img/YT.png' %}" alt="icono" height="40px" width="40px"></a>                  
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4><marquee behavior="" direction="left"><img src="{% static 'img/dance-dog.gif' %}" alt="icono" height="30px" width="30px">Contacto</marquee></h4>
+                    <ul>
+                        <li><a href="#"><img src="{% static 'img/location.png' %}" alt="icono" height="30px" width="30px"> Casita, Maipú</a></li>
+                        <li><a href="#"><img src="{% static 'img/Telefono.png' %}" alt="icono" height="30px" width="30px"> 123456789</a></li>
+                        <li><a href="{% url 'formulario' %}"><img src="{% static 'img/correo.png' %}" alt="icono" height="30px" width="30px"> consultas@alimalitos.cl</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col" style="color: azure;">
+                    <marquee behavior="" direction="left"><small>&copy;<b>Todos los derechos reservados</b></small></marquee>
+                </div>
+                <!--reloj aca-->
+                <div class="footer-col" id="pantalla"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
